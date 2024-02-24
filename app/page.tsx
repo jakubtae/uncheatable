@@ -1,12 +1,8 @@
 import { Box, Container, Paper, Typography } from "@mui/material";
 import Image from "next/image";
 import logo from "@/public/logo.svg";
-import { getAbsoluteUrl } from "@/utils";
-
+import Posts from "@/components/posts";
 export default async function Home() {
-  const data = await fetch(getAbsoluteUrl("")).then((res) => {
-    return res.json();
-  });
   return (
     <Container>
       <Box
@@ -21,19 +17,7 @@ export default async function Home() {
         <Image src={logo} alt="Uncheatable logo" />
         <Typography>Home</Typography>
       </Box>
-      <Box sx={{ display: "flex", flexDirection: "column", gap: 2 }}>
-        {data.map((post: string, index: number) => {
-          return (
-            <Paper
-              elevation={24}
-              key={index}
-              sx={{ px: 4, py: 2, ":hover": { bgcolor: "red" } }}
-            >
-              <Typography>{post}</Typography>
-            </Paper>
-          );
-        })}
-      </Box>
+      <Posts />
     </Container>
   );
 }
