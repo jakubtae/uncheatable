@@ -1,8 +1,10 @@
 import { Box, Container, Paper, Typography } from "@mui/material";
 import Image from "next/image";
 import logo from "@/public/logo.svg";
+import { getAbsoluteUrl } from "@/utils";
+
 export default async function Home() {
-  const data = await fetch("http:/localhost:3000/api").then((res) => {
+  const data = await fetch(getAbsoluteUrl("")).then((res) => {
     return res.json();
   });
   return (
